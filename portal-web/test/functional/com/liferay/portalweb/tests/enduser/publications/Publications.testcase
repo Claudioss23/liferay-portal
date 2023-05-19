@@ -921,6 +921,13 @@ definition {
 			locator1 = "Permissions#CONFIGURATION_PERMISSIONS_VIEW_CHECKBOX");
 	}
 
+	@priority = 2
+	test CreatePublicationScreen {
+		task ("Go to Create a Publication Screen") {
+			Publications.createNewPublication(publicationName = "Test Publications");
+		}
+	}
+
 	@priority = 4
 	test DiscardSubsetsofChangesInPublication {
 		JSONPublications.addPublication(publicationName = "Publication Name");
@@ -1683,15 +1690,5 @@ definition {
 			paginationView = "true",
 			publicationList = "Publication Name 3,Publication Name 2,Publication Name 1");
 	}
-
-	@priority = 2
-	test CreatePublicationScreen {
-		task("Go to Create a Publication Screen") {
-			Publications.createNewPublication(
-				publicationName = "Test Publications"
-			); 
-		}
-	}
-
 
 }
