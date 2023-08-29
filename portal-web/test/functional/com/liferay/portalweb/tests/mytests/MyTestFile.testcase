@@ -20,9 +20,7 @@ definition {
 	@description = "Access Portal Global Menu and validate CONFIGURATION string at Control Panel"
 	@priority = 5
 	test AssertConfigurationSectionPresentInApplicationsMenu {
-		Click(locator1 = "MyPath#APPLICATIONS_MENU");
-
-		Click(locator1 = "MyPath#CONTROL_PANEL");
+		MyMacro.gotoControlPanel();
 
 		AssertElementPresent(locator1 = "MyPath#PANEL_CONFIGURATION_SECTION");
 	}
