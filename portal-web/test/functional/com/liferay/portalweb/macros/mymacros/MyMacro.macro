@@ -1,10 +1,21 @@
 definition {
-    macro previewScreenCustomSize {
-        Click(locator1 = "MyPath#SIMULATION_MENU");
+
+	macro assertScreenCustomValues {
+		AssertTextEquals(
+			locator1 = "MyPath#CUSTOM_SIZE_HEIGHT",
+			value1 = 1920);
+
+		AssertTextEquals(
+			locator1 = "MyPath#CUSTOM_SIZE_WIDTH",
+			value1 = 1080);
+	}
+
+	macro previewScreenCustomSize {
+		Click(locator1 = "MyPath#SIMULATION_MENU");
 
 		Click(locator1 = "MyPath#CUSTOM_SIZE_BUTTON");
 
-        Type.sendKeys(
+		Type.sendKeys(
 			locator1 = "MyPath#CUSTOM_SIZE_HEIGHT",
 			value1 = "keys=CONTROL,a");
 
@@ -21,15 +32,6 @@ definition {
 			value1 = ${width});
 
 		Click(locator1 = "MyPath#CUSTOM_SIZE_APPLY_BUTTON");
-    }
+	}
 
-    macro assertScreenCustomValues {
-        AssertTextEquals(
-			locator1 = "MyPath#CUSTOM_SIZE_HEIGHT",
-			value1 = 1920);
-
-		AssertTextEquals(
-			locator1 = "MyPath#CUSTOM_SIZE_WIDTH",
-			value1 = 1080);
-    }
 }

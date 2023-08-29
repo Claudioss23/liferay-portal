@@ -21,14 +21,14 @@ definition {
 	@priority = 5
 	test CanDefineDXPCustomScreenSize {
 		MyMacro.previewScreenCustomSize(
-            height = "1920",
-            width = "1080");
+			height = 1920,
+			width = 1080);
 
 		Click(locator1 = "MyPath#SIMULATION_MENU");
 
 		MyMacro.previewScreenCustomSize(
-            height = "1920",
-            width = "1080");
+			height = 1920,
+			width = 1080);
 
 		Click(locator1 = "MyPath#SIMULATION_MENU");
 
