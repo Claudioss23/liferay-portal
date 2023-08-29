@@ -1,0 +1,25 @@
+definition {
+    macro previewScreenCustomSize {
+        Click(locator1 = "MyPath#SIMULATION_MENU");
+
+		Click(locator1 = "MyPath#CUSTOM_SIZE_BUTTON");
+
+        Type.sendKeys(
+			locator1 = "MyPath#CUSTOM_SIZE_HEIGHT",
+			value1 = "keys=CONTROL,a");
+
+		Type.sendKeys(
+			locator1 = "MyPath#CUSTOM_SIZE_HEIGHT",
+			value1 = ${height});
+
+		Type.sendKeys(
+			locator1 = "MyPath#CUSTOM_SIZE_WIDTH",
+			value1 = "keys=CONTROL,a");
+
+		Type.sendKeys(
+			locator1 = "MyPath#CUSTOM_SIZE_WIDTH",
+			value1 = ${width});
+
+		Click(locator1 = "MyPath#CUSTOM_SIZE_APPLY_BUTTON");
+    }
+}
