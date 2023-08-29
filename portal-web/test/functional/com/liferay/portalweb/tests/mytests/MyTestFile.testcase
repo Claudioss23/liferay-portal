@@ -1,79 +1,80 @@
 @component-name = "portal"
 definition {
-    property testray.main.component.name = "Navigation";
 
-    setUp {
-        TestCase.setUpPortalInstance();
+	property testray.main.component.name = "Navigation";
 
-        User.firstLoginPG();
+	setUp {
+		TestCase.setUpPortalInstance();
 
-        Navigator.openURL();
-    }
+		User.firstLoginPG();
 
-    tearDown {
-        User.logoutAndLoginPG(
-            userLoginEmailAddress = "test@liferay.com",
-            userLoginFullName = "Test Test");
-    }
+		Navigator.openURL();
+	}
 
-    @description = "Set Screen size to custom and validate values"
-    @priority = "5"
-    test CanDefineDXPCustomScreenSize {
-        Click(locator1 = "MyPath#SIMULATION_MENU");
+	tearDown {
+		User.logoutAndLoginPG(
+			userLoginEmailAddress = "test@liferay.com",
+			userLoginFullName = "Test Test");
+	}
 
-        Click(locator1 = "MyPath#CUSTOM_SIZE_BUTTON");
+	@description = "Set Screen size to custom and validate values"
+	@priority = 5
+	test CanDefineDXPCustomScreenSize {
+		Click(locator1 = "MyPath#SIMULATION_MENU");
 
-        Type.sendKeys(
-            locator1 = "MyPath#CUSTOM_SIZE_HEIGHT",
-            value1 = "keys=CONTROL,a");
+		Click(locator1 = "MyPath#CUSTOM_SIZE_BUTTON");
 
-        Type.sendKeys(
-            locator1 = "MyPath#CUSTOM_SIZE_HEIGHT",
-            value1 = "1920");
+		Type.sendKeys(
+			locator1 = "MyPath#CUSTOM_SIZE_HEIGHT",
+			value1 = "keys=CONTROL,a");
 
-        Type.sendKeys(
-            locator1 = "MyPath#CUSTOM_SIZE_WIDTH",
-            value1 = "keys=CONTROL,a");
+		Type.sendKeys(
+			locator1 = "MyPath#CUSTOM_SIZE_HEIGHT",
+			value1 = 1920);
 
-        Type.sendKeys(
-            locator1 = "MyPath#CUSTOM_SIZE_WIDTH",
-            value1 = "1080");
+		Type.sendKeys(
+			locator1 = "MyPath#CUSTOM_SIZE_WIDTH",
+			value1 = "keys=CONTROL,a");
 
-        Click(locator1 = "MyPath#CUSTOM_SIZE_APPLY_BUTTON");
+		Type.sendKeys(
+			locator1 = "MyPath#CUSTOM_SIZE_WIDTH",
+			value1 = 1080);
 
-        Click(locator1 = "MyPath#SIMULATION_MENU");
+		Click(locator1 = "MyPath#CUSTOM_SIZE_APPLY_BUTTON");
 
-        Click(locator1 = "MyPath#SIMULATION_MENU");
+		Click(locator1 = "MyPath#SIMULATION_MENU");
 
-        Type.sendKeys(
-            locator1 = "MyPath#CUSTOM_SIZE_HEIGHT",
-            value1 = "keys=CONTROL,a");
+		Click(locator1 = "MyPath#SIMULATION_MENU");
 
-        Type.sendKeys(
-            locator1 = "MyPath#CUSTOM_SIZE_HEIGHT",
-            value1 = "1920");
+		Type.sendKeys(
+			locator1 = "MyPath#CUSTOM_SIZE_HEIGHT",
+			value1 = "keys=CONTROL,a");
 
-        Type.sendKeys(
-            locator1 = "MyPath#CUSTOM_SIZE_WIDTH",
-            value1 = "keys=CONTROL,a");
+		Type.sendKeys(
+			locator1 = "MyPath#CUSTOM_SIZE_HEIGHT",
+			value1 = 1920);
 
-        Type.sendKeys(
-            locator1 = "MyPath#CUSTOM_SIZE_WIDTH",
-            value1 = "1080");
+		Type.sendKeys(
+			locator1 = "MyPath#CUSTOM_SIZE_WIDTH",
+			value1 = "keys=CONTROL,a");
 
-        Click(locator1 = "MyPath#CUSTOM_SIZE_APPLY_BUTTON");
+		Type.sendKeys(
+			locator1 = "MyPath#CUSTOM_SIZE_WIDTH",
+			value1 = 1080);
 
-        Click(locator1 = "MyPath#SIMULATION_MENU");
+		Click(locator1 = "MyPath#CUSTOM_SIZE_APPLY_BUTTON");
 
-        Click(locator1 = "MyPath#SIMULATION_MENU");
+		Click(locator1 = "MyPath#SIMULATION_MENU");
 
-        AssertTextEquals(
-            locator1 = "MyPath#CUSTOM_SIZE_HEIGHT",
-            value1 = "1920");
+		Click(locator1 = "MyPath#SIMULATION_MENU");
 
-        AssertTextEquals(
-            locator1 = "MyPath#CUSTOM_SIZE_WIDTH",
-            value1 = "1080");
-    }
+		AssertTextEquals(
+			locator1 = "MyPath#CUSTOM_SIZE_HEIGHT",
+			value1 = 1920);
+
+		AssertTextEquals(
+			locator1 = "MyPath#CUSTOM_SIZE_WIDTH",
+			value1 = 1080);
+	}
 
 }
