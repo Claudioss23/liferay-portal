@@ -10,7 +10,31 @@
 </thead>
 
 <tbody>
-
+<tr>
+    <td>SIMULATION_MENU</td>
+	<td>//div[contains(@class,'control-menu')]//button[@data-qa-id='simulation']</td>
+	<td></td>
+</tr>
+<tr>
+    <td>CUSTOM_SIZE_BUTTON</td>
+	<td>//div[contains(@class,'row size-selector')]//button[child::span[text()='Custom']]</td>
+	<td></td>
+</tr>
+<tr>
+    <td>CUSTOM_SIZE_HEIGHT</td>
+	<td>//div[contains(@id,'customSizeSelector')]//input[contains(@id,'height')]</td>
+	<td></td>
+</tr>
+<tr>
+    <td>CUSTOM_SIZE_WIDTH</td>
+	<td>//div[contains(@id,'customSizeSelector')]//input[contains(@id,'width')]</td>
+	<td></td>
+</tr>
+<tr>
+    <td>CUSTOM_SIZE_APPLY_BUTTON</td>
+	<td>//div[contains(@id,'customSizeSelector')]//button[@aria-label='Apply Custom Size']</td>
+	<td></td>
+</tr>
 </tbody>
 </table>
 </body>
