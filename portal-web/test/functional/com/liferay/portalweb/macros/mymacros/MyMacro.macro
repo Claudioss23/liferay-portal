@@ -1,7 +1,9 @@
 definition {
-    macro gotoControlPanel {
-        Click(locator1 = "MyPath#APPLICATIONS_MENU");
+
+	macro gotoControlPanel {
+		Click(locator1 = "MyPath#APPLICATIONS_MENU");
 
 		Click(locator1 = "MyPath#CONTROL_PANEL");
-    }
+	}
+
 }
