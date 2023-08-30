@@ -32,4 +32,28 @@ definition {
 			PortalInstances.tearDownCP();
 		}
 	}
+
+	@description = "Can Create a Blog"
+	@priority = 5
+	test CanCreateBlog {
+		task ("When the user adds a Blog Entry") {
+			Click(
+				key_text = "New Entry",
+				locator1 = "Button#ANY");
+
+			WaitForSPARefresh();
+
+			BlogsEntry.addTitle(entryTitle = "Blog Entry Title");
+
+			BlogsEntry.addContent(entryContent = "Blog Entry Content");
+
+			PortletEntry.publish();
+		}
+
+		task ("Then the Blog Entry should display on the page") {
+			BlogsEntry.viewEntryPG(
+				entryContent = "Blog Entry Content",
+				entryTitle = "Blog Entry Title");
+		}
+	}
 }
