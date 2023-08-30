@@ -32,6 +32,7 @@ definition {
 			PortalInstances.tearDownCP();
 		}
 	}
+
 	@description = "Can Delete a Blog"
 	@priority = 4
 	test CanDeleteBlog {
@@ -71,5 +72,5 @@ definition {
 				entryTitle = "Blog Entry Title 2");
 		}
 	}
-	
+
 }
