@@ -32,4 +32,34 @@ definition {
 			PortalInstances.tearDownCP();
 		}
 	}
+
+	@description = "Can Create a Blog"
+	@priority = 5
+	test CanEditBlog {
+		task ("And a Blog Entry exists") {
+			JSONBlog.addEntry(
+				entryContent = "Blog Entry Content",
+				entryTitle = "Blog Entry Title");
+
+			Navigator.gotoPage(pageName = "Blogs Page");
+
+			BlogsEntry.viewEntryPG(
+				entryContent = "Blog Entry Content",
+				entryTitle = "Blog Entry Title");
+		}
+
+		task ("When the User edits the blog Entry") {
+			Blogs.editEntryPG(
+				entryContent = "Blog Entry Content",
+				entryContentEdit = "Edited Blog Entry Content",
+				entryTitle = "Blog Entry Title",
+				entryTitleEdit = "Edited Blog Entry Title");
+		}
+
+		task ("Then the Blog Entry should be edited") {
+			BlogsEntry.viewEntryPG(
+				entryContent = "Edited Blog Entry Content",
+				entryTitle = "Edited Blog Entry Title");
+		}
+	}
 }
