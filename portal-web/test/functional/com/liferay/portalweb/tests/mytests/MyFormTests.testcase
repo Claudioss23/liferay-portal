@@ -1,15 +1,16 @@
 @component-name = "portal-web-forms-and-data-lists"
 definition {
-    property testray.main.component.name = "Forms";
 
-    setUp {
-        TestCase.setUpPortalInstance();
+	property testray.main.component.name = "Forms";
 
-        User.firstLoginPG();
-    }
+	setUp {
+		TestCase.setUpPortalInstance();
 
-    tearDown {
-        var testLiferayVirtualInstance = PropsUtil.get("test.liferay.virtual.instance");
+		User.firstLoginPG();
+	}
+
+	tearDown {
+		var testLiferayVirtualInstance = PropsUtil.get("test.liferay.virtual.instance");
 
 		if (${testLiferayVirtualInstance} == "true") {
 			PortalInstances.tearDownCP();
@@ -25,114 +26,112 @@ definition {
 
 			PagesAdmin.tearDownCP();
 		}
-    }
+	}
 
-    @description = "Access Portal Global Menu and validate CONFIGURATION string at Control Panel"
-    @priority = "5"
-    test CheckIsPossibleSubmitFormWithTwoDifferentLanguages {
+	@description = "Access Portal Global Menu and validate CONFIGURATION string at Control Panel"
+	@priority = 5
+	test CheckIsPossibleSubmitFormWithTwoDifferentLanguages {
+		task ("Create Form with Text and Numeric fields") {
+			FormsAdmin.addForm();
 
-        task("Create Form with Text and Numeric fields") {
-            FormsAdmin.addForm();
+			Form.editName(formName = "Test Form");
 
-            Form.editName(formName = "Test Form");
+			Form.gotoAddField(
+				fieldPositionNumber = 0,
+				fieldType = "Text");
 
-            Form.gotoAddField(
-                fieldPositionNumber = 0,
-                fieldType = "Text");
+			Form.editFieldLabelMetal(fieldValue = "Full Name");
 
-            Form.editFieldLabelMetal(fieldValue = "Full Name");
+			Form.closeSidebar();
 
-            Form.closeSidebar();
+			Form.gotoAddField(
+				fieldPositionNumber = 1,
+				fieldType = "Numeric");
 
-            Form.gotoAddField(
-                fieldPositionNumber = 1,
-                fieldType = "Numeric");
+			Form.editFieldLabelMetal(fieldValue = "Age");
 
-            Form.editFieldLabelMetal(fieldValue = "Age");
+			Form.closeSidebar();
+		}
 
-            Form.closeSidebar();
-        }
-        
-        task ("Translate fields to another language") {
-            Form.addTranslation(localizedLanguage = "Portuguese (Brazil)");
+		task ("Translate fields to another language") {
+			Form.addTranslation(localizedLanguage = "Portuguese (Brazil)");
 
-            FormViewBuilder.editFieldLabel(
-                fieldLabel = "Full Name",
-                label = "Nome Completo");
+			FormViewBuilder.editFieldLabel(
+				fieldLabel = "Full Name",
+				label = "Nome Completo");
 
-            FormViewBuilder.editFieldLabel(
-                fieldLabel = "Age",
-                label = "Idade");
-        }
-        
-        task ("Publish form and submit once for each language while validating the translated fields") {
-            Form.publishForm();
+			FormViewBuilder.editFieldLabel(
+				fieldLabel = "Age",
+				label = "Idade");
+		}
 
-            FormsAdminNavigator.gotoPublishedForm();
+		task ("Publish form and submit once for each language while validating the translated fields") {
+			Form.publishForm();
 
-            FormPortlet.waitFormRenderer(text = "Submit");
+			FormsAdminNavigator.gotoPublishedForm();
 
-            FormFields.viewTextField(
-                fieldName = "Text",
-                fieldLabel = "Full Name");
+			FormPortlet.waitFormRenderer(text = "Submit");
 
-            FormFields.editText(
-                fieldName = "Full Name",
-                fieldValue = "Claudio Souza");
+			FormFields.viewTextField(
+				fieldLabel = "Full Name",
+				fieldName = "Text");
 
-            FormFields.viewTextField(
-                fieldName = "Numeric",
-                fieldLabel = "Age");
+			FormFields.editText(
+				fieldName = "Full Name",
+				fieldValue = "Claudio Souza");
 
-            FormFields.editText(
-                fieldName = "Age",
-                fieldValue = "22");
+			FormFields.viewTextField(
+				fieldLabel = "Age",
+				fieldName = "Numeric");
 
-            FormPortlet.submitSuccessfully();
+			FormFields.editText(
+				fieldName = "Age",
+				fieldValue = 22);
 
-            Form.submitAgain();
+			FormPortlet.submitSuccessfully();
 
-            FormPortlet.waitFormRenderer(text = "Submit");
+			Form.submitAgain();
 
-            FormPortletConfiguration.changeLanguage(
-                currentLanguage = "en-US",
-                newLanguage = "português-Brasil");
-            
-            FormPortlet.waitFormRenderer(text = "Submit");
+			FormPortlet.waitFormRenderer(text = "Submit");
 
-            FormFields.viewTextField(
-                fieldName = "Text",
-                fieldLabel = "Nome Completo");
+			FormPortletConfiguration.changeLanguage(
+				currentLanguage = "en-US",
+				newLanguage = "português-Brasil");
 
-            FormFields.editText(
-                fieldName = "Nome Completo",
-                fieldValue = "David Montenegro");
+			FormPortlet.waitFormRenderer(text = "Submit");
 
-            FormFields.viewTextField(
-                fieldName = "Numeric",
-                fieldLabel = "Idade");
+			FormFields.viewTextField(
+				fieldLabel = "Nome Completo",
+				fieldName = "Text");
 
-            FormFields.editText(
-                fieldName = "Idade",
-                fieldValue = "19");
+			FormFields.editText(
+				fieldName = "Nome Completo",
+				fieldValue = "David Montenegro");
 
-            FormPortlet.submitSuccessfully();
-        }
+			FormFields.viewTextField(
+				fieldLabel = "Idade",
+				fieldName = "Numeric");
 
-        task ("Validate submitted entries") {
-            FormsAdmin.openFormsAdmin(siteURLKey = "guest");
+			FormFields.editText(
+				fieldName = "Idade",
+				fieldValue = 19);
 
-            FormsAdminNavigator.gotoViewEntries();
+			FormPortlet.submitSuccessfully();
+		}
 
-            LexiconEntry.viewEntryContent(
-                rowEntry = "Claudio Souza",
-                rowAny = "22"
-            );
+		task ("Validate submitted entries") {
+			FormsAdmin.openFormsAdmin(siteURLKey = "guest");
 
-            LexiconEntry.viewEntryContent(
-                rowEntry = "David Montenegro",
-                rowAny = "19"
-            );
-        }
-    }
+			FormsAdminNavigator.gotoViewEntries();
+
+			LexiconEntry.viewEntryContent(
+				rowAny = 22,
+				rowEntry = "Claudio Souza");
+
+			LexiconEntry.viewEntryContent(
+				rowAny = 19,
+				rowEntry = "David Montenegro");
+		}
+	}
+
 }
