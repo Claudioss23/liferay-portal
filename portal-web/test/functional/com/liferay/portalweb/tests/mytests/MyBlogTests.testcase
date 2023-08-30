@@ -80,7 +80,7 @@ definition {
 				searchAssetTitle = "Blog Entry Title 2",
 				searchAssetType = "Blogs Entry",
 				searchTerm = "\"Blog Entry Title 2\"");
-			
+
 			SearchResultPortlet.viewSearchResultNotPresent(
 				searchAssetTitle = "Blog Entry Title 1",
 				searchAssetType = "Blogs Entry");
