@@ -34,4 +34,53 @@ definition {
 			PortalInstances.tearDownCP();
 		}
 	}
+
+    @description = "Can Delete a Documents and Media"
+	@priority = 4
+	test CanDeleteDM {
+		task ("And create 2 Documents and Media (Upload the file)") {
+			JSONDocument.addFileWithUploadedFile(
+				dmDocumentTitle = "DMTest 1",
+				groupName = "Guest",
+				mimeType = "text/plain",
+				sourceFileName = "Document_1.txt");
+
+			JSONDocument.addFileWithUploadedFile(
+				dmDocumentTitle = "DMTest 2",
+				groupName = "Guest",
+				mimeType = "application/msword",
+				sourceFileName = "Document_2.doc");
+
+			Navigator.gotoPage(pageName = "DM Page");
+
+            DMDocument.viewPG(
+                dmDocumentFileName = "Document_1.txt",
+                dmDocumentTitle = "DMTest 1");
+
+            Navigator.gotoPage(pageName = "DM Page");
+
+            DMDocument.viewPG(
+                dmDocumentFileName = "Document_2.doc",
+                dmDocumentTitle = "DMTest 2");
+		}
+
+		task ("When the User delete a document and media") {
+			DMNavigator.openDocumentsAndMediaAdmin(siteURLKey = "guest");
+
+			DMDocument.deleteCP(dmDocumentTitle = "DMTest 1");
+
+			Navigator.gotoPage(pageName = "DM Page");
+		}
+
+		task ("Then DMTest 1 should not exist") {
+			DMDocument.cannotViewCP(dmDocumentTitle = "DMTest 1");
+		}
+
+		task ("And DMTest 2 should exist") {
+			DMDocument.viewPG(
+                dmDocumentFileName = "Document_2.doc",
+                dmDocumentTitle = "DMTest 2");
+		}
+	}
+
 }
