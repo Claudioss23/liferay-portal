@@ -1,0 +1,37 @@
+@component-name = "portal-document-management"
+definition {
+
+	property testray.main.component.name = "Document Management";
+
+	setUp {
+		TestCase.setUpPortalInstance();
+
+		User.firstLoginPG();
+
+		Navigator.openURL();
+
+		task ("Given the DM Portlet is added to the page") {
+			JSONLayout.addPublicLayout(
+				groupName = "Guest",
+				layoutName = "DM Page");
+
+			JSONLayout.addWidgetToPublicLayout(
+				column = 1,
+				groupName = "Guest",
+				layoutName = "DM Page",
+				widgetName = "Documents and Media");
+
+			Navigator.gotoPage(pageName = "DM Page");
+
+			LexiconEntry.changeDisplayStyle(displayStyle = "list");
+		}
+	}
+
+	tearDown {
+		var testPortalInstance = PropsUtil.get("test.portal.instance");
+
+		if (${testPortalInstance} == "true") {
+			PortalInstances.tearDownCP();
+		}
+	}
+}
