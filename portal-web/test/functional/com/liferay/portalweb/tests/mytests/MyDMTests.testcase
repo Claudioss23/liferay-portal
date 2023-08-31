@@ -34,4 +34,41 @@ definition {
 			PortalInstances.tearDownCP();
 		}
 	}
+
+    @description = "Can Edit a Documents and Media"
+	@priority = 5
+	test CanEditDM {
+		task ("And create a Document and Media (Upload the file)") {
+			JSONDocument.addFileWithUploadedFile(
+				dmDocumentTitle = "DM File",
+				groupName = "Guest",
+				mimeType = "text/plain",
+				sourceFileName = "Document_1.txt");
+
+			Navigator.gotoPage(pageName = "DM Page");
+
+            DMDocument.viewPG(
+                dmDocumentFileName = "Document_1.txt",
+                dmDocumentTitle = "DM File");
+		}
+
+		task ("When the User edits the Documents and Media (Change DM name and the file)") {
+			DMNavigator.openDocumentsAndMediaAdmin(siteURLKey = "guest");
+
+			DMDocument.editCP(
+				dmDocumentFileEdit = "Document_2.doc",
+                dmDocumentFileNameEdit = "Document_2.doc",
+				dmDocumentTitle = "DM File",
+				dmDocumentTitleEdit = "DM Document Edited");
+
+			Navigator.gotoPage(pageName = "DM Page");
+		}
+
+		task ("Then the Documents and Media should be edited") {
+			DMDocument.viewPG(
+                dmDocumentFileName = "Document_2.doc",
+                dmDocumentTitle = "DM Document Edited");
+		}
+	}
+
 }
