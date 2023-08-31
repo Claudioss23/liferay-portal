@@ -35,7 +35,7 @@ definition {
 		}
 	}
 
-    @description = "Can Download a Documents and Media"
+	@description = "Can Download a Documents and Media"
 	@priority = 5
 	test CanDownloadDM {
 		task ("And create 2 Documents and Media (Upload the file)") {
@@ -53,17 +53,17 @@ definition {
 
 			Navigator.gotoPage(pageName = "DM Page");
 
-            DMDocument.viewPG(
-                dmDocumentFileName = "Document_1.txt",
-                dmDocumentTitle = "DMTest 1");
+			DMDocument.viewPG(
+				dmDocumentFileName = "Document_1.txt",
+				dmDocumentTitle = "DMTest 1");
 
-            Navigator.gotoPage(pageName = "DM Page");
+			Navigator.gotoPage(pageName = "DM Page");
 
-            DMDocument.viewPG(
-                dmDocumentFileName = "Document_2.doc",
-                dmDocumentTitle = "DMTest 2");
+			DMDocument.viewPG(
+				dmDocumentFileName = "Document_2.doc",
+				dmDocumentTitle = "DMTest 2");
 
-            Navigator.gotoPage(pageName = "DM Page");
+			Navigator.gotoPage(pageName = "DM Page");
 		}
 
 		task ("When the user download document from DMTest 1") {
