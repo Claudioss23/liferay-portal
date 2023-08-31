@@ -34,4 +34,25 @@ definition {
 			PortalInstances.tearDownCP();
 		}
 	}
+
+    @description = "Can Create a Documents and Media"
+	@priority = 5
+	test CanCreateDM {
+		task ("When the user create a Documents and Media (Upload the file)") {
+			JSONDocument.addFileWithUploadedFile(
+				dmDocumentTitle = "DM File",
+				groupName = "Guest",
+				mimeType = "text/plain",
+				sourceFileName = "Document_1.txt");
+
+			Navigator.gotoPage(pageName = "DM Page");
+		}
+
+		task ("Then the Documents and Media should display on the page") {
+			DMDocument.viewPG(
+                dmDocumentTitle = "DM File",
+                dmDocumentFileName = "Document_1.txt");
+		}
+	}
+
 }
