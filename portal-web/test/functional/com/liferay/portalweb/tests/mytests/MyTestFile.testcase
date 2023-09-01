@@ -18,7 +18,9 @@ definition {
 
 		Click(locator1 = "MyPath#CONTROL_PANEL");
 
-		AssertElementPresent(locator1 = "MyPath#PANEL_CONFIGURATION_SECTION");
+		AssertTextEquals(
+			locator1 = "MyPath#PANEL_CONFIGURATION_TEXT",
+			value1 = "Configuration");
 	}
 
 }
