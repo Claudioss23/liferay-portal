@@ -11,7 +11,7 @@ definition {
 		Navigator.openURL();
 	}
 
-	@description = "Access Portal Global Menu and validate CONFIGURATION string at Control Panel"
+	@description = "Access Applications Menu and validate CONFIGURATION string at Control Panel"
 	@priority = 5
 	test AssertConfigurationSectionPresentInApplicationsMenu {
 		Click(locator1 = "MyPath#APPLICATIONS_MENU");
