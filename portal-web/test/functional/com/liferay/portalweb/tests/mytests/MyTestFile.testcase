@@ -11,12 +11,6 @@ definition {
 		Navigator.openURL();
 	}
 
-	tearDown {
-		User.logoutAndLoginPG(
-			userLoginEmailAddress = "test@liferay.com",
-			userLoginFullName = "Test Test");
-	}
-
 	@description = "Access Portal Global Menu and validate CONFIGURATION string at Control Panel"
 	@priority = 5
 	test AssertConfigurationSectionPresentInApplicationsMenu {
