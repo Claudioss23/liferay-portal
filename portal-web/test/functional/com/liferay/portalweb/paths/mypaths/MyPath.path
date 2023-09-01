@@ -21,8 +21,8 @@
 	<td></td>
 </tr>
 <tr>
-	<td>PANEL_CONFIGURATION_SECTION</td>
-	<td>//div[@class='col-md' and child::nav[@aria-labelledby='nav_control_panel.configuration']]</td>
+	<td>PANEL_CONFIGURATION_TEXT</td>
+	<td>//div[@class='col-md']//h2[@id='nav_control_panel.configuration']</td>
 	<td></td>
 </tr>
 </tbody>
