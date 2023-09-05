@@ -62,7 +62,7 @@ definition {
 				dmDocumentFileNameEdit = "Document_2.doc",
 				dmDocumentTitle = "DM File",
 				dmDocumentTitleEdit = "DM Document Edited");
-			
+
 			Navigator.gotoPage(pageName = "DM Page");
 		}
 
