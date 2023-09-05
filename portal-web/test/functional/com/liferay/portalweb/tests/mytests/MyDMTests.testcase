@@ -23,6 +23,8 @@ definition {
 
 			Navigator.gotoPage(pageName = "DM Page");
 
+			DMDocument.enableActionsMenuOnPortlet();
+
 			LexiconEntry.changeDisplayStyle(displayStyle = "list");
 		}
 	}
@@ -51,25 +53,23 @@ definition {
 				mimeType = "application/msword",
 				sourceFileName = "Document_2.doc");
 
-			Navigator.gotoPage(pageName = "DM Page");
+			Refresh();
 
 			DMDocument.viewPG(
 				dmDocumentFileName = "Document_1.txt",
 				dmDocumentTitle = "DMTest 1");
 
-			Navigator.gotoPage(pageName = "DM Page");
+			Click(locator1 = "Icon#BACK");
 
 			DMDocument.viewPG(
 				dmDocumentFileName = "Document_2.doc",
 				dmDocumentTitle = "DMTest 2");
+
+			Click(locator1 = "Icon#BACK");
 		}
 
 		task ("When the User delete a document and media") {
-			DMNavigator.openDocumentsAndMediaAdmin(siteURLKey = "guest");
-
-			DMDocument.deleteCP(dmDocumentTitle = "DMTest 1");
-
-			Navigator.gotoPage(pageName = "DM Page");
+			DMDocument.deletePG(dmDocumentTitle = "DMTest 1");
 		}
 
 		task ("Then DMTest 1 should not exist") {
