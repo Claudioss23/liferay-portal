@@ -78,7 +78,7 @@ definition {
 
 			FormFields.editText(
 				fieldName = "Full Name",
-				fieldValue = "Claudio Souza");
+				fieldValue = "Person Name 1");
 
 			FormFields.viewTextField(
 				fieldLabel = "Age",
@@ -106,7 +106,7 @@ definition {
 
 			FormFields.editText(
 				fieldName = "Nome Completo",
-				fieldValue = "David Montenegro");
+				fieldValue = "Person Name 2");
 
 			FormFields.viewTextField(
 				fieldLabel = "Idade",
@@ -126,11 +126,11 @@ definition {
 
 			LexiconEntry.viewEntryContent(
 				rowAny = 22,
-				rowEntry = "Claudio Souza");
+				rowEntry = "Person Name 1");
 
 			LexiconEntry.viewEntryContent(
 				rowAny = 19,
-				rowEntry = "David Montenegro");
+				rowEntry = "Person Name 2");
 		}
 	}
 
