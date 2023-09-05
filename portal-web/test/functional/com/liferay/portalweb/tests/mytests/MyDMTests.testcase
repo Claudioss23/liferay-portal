@@ -43,8 +43,7 @@ definition {
 		task ("When the user create a Documents and Media (Upload the file)") {
 			DMDocument.addPG(
 				dmDocumentFile = "Document_1.txt",
-				dmDocumentTitle = "DM File"
-			);
+				dmDocumentTitle = "DM File");
 		}
 
 		task ("Then the Documents and Media should display on the page") {
