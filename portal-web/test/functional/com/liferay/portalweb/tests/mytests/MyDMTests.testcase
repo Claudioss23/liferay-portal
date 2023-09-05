@@ -23,6 +23,8 @@ definition {
 
 			Navigator.gotoPage(pageName = "DM Page");
 
+			DMDocument.enableActionsMenuOnPortlet();
+
 			LexiconEntry.changeDisplayStyle(displayStyle = "list");
 		}
 	}
@@ -50,17 +52,17 @@ definition {
 			DMDocument.viewPG(
 				dmDocumentFileName = "Document_1.txt",
 				dmDocumentTitle = "DM File");
+
+			Navigator.gotoPage(pageName = "DM Page");
 		}
 
 		task ("When the User edits the Documents and Media (Change DM name and the file)") {
-			DMNavigator.openDocumentsAndMediaAdmin(siteURLKey = "guest");
-
-			DMDocument.editCP(
+			DMDocument.editPG(
 				dmDocumentFileEdit = "Document_2.doc",
 				dmDocumentFileNameEdit = "Document_2.doc",
 				dmDocumentTitle = "DM File",
 				dmDocumentTitleEdit = "DM Document Edited");
-
+			
 			Navigator.gotoPage(pageName = "DM Page");
 		}
 
