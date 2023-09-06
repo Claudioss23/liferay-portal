@@ -47,13 +47,13 @@ definition {
 				mimeType = "text/plain",
 				sourceFileName = "Document_1.txt");
 
-			Navigator.gotoPage(pageName = "DM Page");
+			Refresh();
 
 			DMDocument.viewPG(
 				dmDocumentFileName = "Document_1.txt",
 				dmDocumentTitle = "DM File");
 
-			Navigator.gotoPage(pageName = "DM Page");
+			Click(locator1 = "Icon#BACK");
 		}
 
 		task ("When the User edits the Documents and Media (Change DM name and the file)") {
@@ -63,7 +63,7 @@ definition {
 				dmDocumentTitle = "DM File",
 				dmDocumentTitleEdit = "DM Document Edited");
 
-			Navigator.gotoPage(pageName = "DM Page");
+			Click(locator1 = "Icon#BACK");
 		}
 
 		task ("Then the Documents and Media should be edited") {
