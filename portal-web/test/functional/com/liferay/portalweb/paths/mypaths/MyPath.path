@@ -21,13 +21,8 @@
 	<td></td>
 </tr>
 <tr>
-	<td>CUSTOM_SIZE_HEIGHT</td>
-	<td>//div[contains(@id,'customSizeSelector')]//input[contains(@id,'height')]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>CUSTOM_SIZE_WIDTH</td>
-	<td>//div[contains(@id,'customSizeSelector')]//input[contains(@id,'width')]</td>
+	<td>CUSTOM_SIZE_INPUT</td>
+	<td>//div[contains(@id,'customSizeSelector')]//input[contains(@id,'${key_id}')]</td>
 	<td></td>
 </tr>
 <tr>
