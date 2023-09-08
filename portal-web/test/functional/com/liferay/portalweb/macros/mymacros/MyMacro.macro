@@ -6,4 +6,11 @@ definition {
 		Click(locator1 = "MyPath#CONTROL_PANEL");
 	}
 
+	macro viewControlPanelSectionText {
+		AssertTextEquals(
+			key_panelSection = ${panelSection},
+			locator1 = "MyPath#PANEL_SECTION_TEXT",
+			value1 = ${sectionText});
+	}
+
 }
