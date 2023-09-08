@@ -17,8 +17,8 @@ definition {
 		MyMacro.gotoControlPanel();
 
 		MyMacro.viewControlPanelSectionText(
-			sectionText = "Configuration",
-			panelSection = "configuration");
+			panelSection = "configuration",
+			sectionText = "Configuration");
 	}
 
 }
