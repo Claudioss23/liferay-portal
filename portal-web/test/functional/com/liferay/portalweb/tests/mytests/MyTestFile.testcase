@@ -16,7 +16,9 @@ definition {
 	test AssertConfigurationSectionPresentInApplicationsMenu {
 		MyMacro.gotoControlPanel();
 
-		AssertElementPresent(locator1 = "MyPath#PANEL_CONFIGURATION_SECTION");
+		MyMacro.viewControlPanelSectionText(
+			sectionText = "Configuration",
+			panelSection = "configuration");
 	}
 
 }
