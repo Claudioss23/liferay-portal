@@ -12,7 +12,7 @@ definition {
 	}
 
 	@description = "Access Applications Menu and validate CONFIGURATION string at Control Panel"
-	@priority = 5
+	@priority = 2
 	test AssertConfigurationSectionPresentInApplicationsMenu {
 		MyMacro.gotoControlPanel();
 
