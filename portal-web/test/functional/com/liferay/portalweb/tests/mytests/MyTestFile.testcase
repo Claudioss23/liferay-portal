@@ -19,19 +19,23 @@ definition {
 		Click(locator1 = "MyPath#CUSTOM_SIZE_BUTTON");
 
 		Type.sendKeys(
-			locator1 = "MyPath#CUSTOM_SIZE_HEIGHT",
+			locator1 = "MyPath#CUSTOM_SIZE_INPUT",
+			key_id = "height",
 			value1 = "keys=CONTROL,a");
 
 		Type.sendKeys(
-			locator1 = "MyPath#CUSTOM_SIZE_HEIGHT",
+			locator1 = "MyPath#CUSTOM_SIZE_INPUT",
+			key_id = "height",
 			value1 = 1920);
 
 		Type.sendKeys(
-			locator1 = "MyPath#CUSTOM_SIZE_WIDTH",
+			locator1 = "MyPath#CUSTOM_SIZE_INPUT",
+			key_id = "width",
 			value1 = "keys=CONTROL,a");
 
 		Type.sendKeys(
-			locator1 = "MyPath#CUSTOM_SIZE_WIDTH",
+			locator1 = "MyPath#CUSTOM_SIZE_INPUT",
+			key_id = "width",
 			value1 = 1080);
 
 		Click(locator1 = "MyPath#CUSTOM_SIZE_APPLY_BUTTON");
@@ -41,19 +45,23 @@ definition {
 		Click(locator1 = "MyPath#SIMULATION_MENU");
 
 		Type.sendKeys(
-			locator1 = "MyPath#CUSTOM_SIZE_HEIGHT",
+			locator1 = "MyPath#CUSTOM_SIZE_INPUT",
+			key_id = "height",
 			value1 = "keys=CONTROL,a");
 
 		Type.sendKeys(
-			locator1 = "MyPath#CUSTOM_SIZE_HEIGHT",
+			locator1 = "MyPath#CUSTOM_SIZE_INPUT",
+			key_id = "height",
 			value1 = 1920);
 
 		Type.sendKeys(
-			locator1 = "MyPath#CUSTOM_SIZE_WIDTH",
+			locator1 = "MyPath#CUSTOM_SIZE_INPUT",
+			key_id = "width",
 			value1 = "keys=CONTROL,a");
 
 		Type.sendKeys(
-			locator1 = "MyPath#CUSTOM_SIZE_WIDTH",
+			locator1 = "MyPath#CUSTOM_SIZE_INPUT",
+			key_id = "width",
 			value1 = 1080);
 
 		Click(locator1 = "MyPath#CUSTOM_SIZE_APPLY_BUTTON");
@@ -63,11 +71,13 @@ definition {
 		Click(locator1 = "MyPath#SIMULATION_MENU");
 
 		AssertTextEquals(
-			locator1 = "MyPath#CUSTOM_SIZE_HEIGHT",
+			locator1 = "MyPath#CUSTOM_SIZE_INPUT",
+			key_id = "height",
 			value1 = 1920);
 
 		AssertTextEquals(
-			locator1 = "MyPath#CUSTOM_SIZE_WIDTH",
+			locator1 = "MyPath#CUSTOM_SIZE_INPUT",
+			key_id = "width",
 			value1 = 1080);
 	}
 
