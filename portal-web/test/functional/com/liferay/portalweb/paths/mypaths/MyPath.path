@@ -12,12 +12,12 @@
 <tbody>
 <tr>
 	<td>APPLICATIONS_MENU</td>
-	<td>//div[contains(@class,'control-menu')]//button[@data-qa-id='applicationsMenu']</td>
+	<td>//button[@data-qa-id='applicationsMenu']</td>
 	<td></td>
 </tr>
 <tr>
 	<td>CONTROL_PANEL</td>
-	<td>//li[@class='nav-item']/button[child::span[text()='Control Panel']]</td>
+	<td>//li[@class='nav-item']/button[span[text()='Control Panel']]</td>
 	<td></td>
 </tr>
 <tr>
