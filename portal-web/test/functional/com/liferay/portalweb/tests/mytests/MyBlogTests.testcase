@@ -33,7 +33,7 @@ definition {
 		}
 	}
 
-	@description = "Can Delete a Blog"
+	@description = "Check that is possible to delete a blog"
 	@priority = 4
 	test CanDeleteBlog {
 		task ("And 2 Blog Entries exists") {
