@@ -35,7 +35,7 @@ definition {
 		}
 	}
 
-	@description = "Can Download a Documents and Media"
+	@description = "Check that is possible to download a Document and Media"
 	@priority = 5
 	test CanDownloadDM {
 		task ("And create 2 Documents and Media (Upload the file)") {
