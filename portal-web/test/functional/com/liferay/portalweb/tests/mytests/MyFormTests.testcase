@@ -29,7 +29,7 @@ definition {
 	}
 
 	@description = "Check is possible to submit the form with two different languages"
-	@priority = 5
+	@priority = 4
 	test CheckIsPossibleSubmitFormWithTwoDifferentLanguages {
 		task ("Create Form with Text and Numeric fields") {
 			FormsAdmin.addForm();
