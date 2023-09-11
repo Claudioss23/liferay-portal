@@ -28,7 +28,7 @@ definition {
 		}
 	}
 
-	@description = "Access Portal Global Menu and validate CONFIGURATION string at Control Panel"
+	@description = "Check is possible to submit the form with two different languages"
 	@priority = 5
 	test CheckIsPossibleSubmitFormWithTwoDifferentLanguages {
 		task ("Create Form with Text and Numeric fields") {
