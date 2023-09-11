@@ -12,6 +12,14 @@ definition {
 			value1 = ${customWidth});
 	}
 
+	macro gotoSimulationScreenSize {
+		Click(locator1 = "MyPath#SIMULATION_MENU");
+
+		Click(
+			key_screenSize = ${screenSizeLabel},
+			locator1 = "MyPath#SCREEN_SIZE_BUTTON");
+	}
+
 	macro setScreenCustomSize {
 		WaitForEditable(
 			key_id = "height",
