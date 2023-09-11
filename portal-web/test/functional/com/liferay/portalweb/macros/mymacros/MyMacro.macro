@@ -12,7 +12,7 @@ definition {
 			value1 = ${customWidth});
 	}
 
-	macro previewScreenCustomSize {
+	macro setScreenCustomSize {
 		Click(locator1 = "MyPath#SIMULATION_MENU");
 
 		Click(locator1 = "MyPath#CUSTOM_SIZE_BUTTON");
