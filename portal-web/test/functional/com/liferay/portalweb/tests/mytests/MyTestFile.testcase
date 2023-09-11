@@ -12,7 +12,7 @@ definition {
 	}
 
 	@description = "Set Screen size to custom and validate values"
-	@priority = 5
+	@priority = 3
 	test CanDefineDXPCustomScreenSize {
 		MyMacro.previewScreenCustomSize(
 			height = 1920,
