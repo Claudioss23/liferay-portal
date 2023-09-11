@@ -16,8 +16,8 @@
 	<td></td>
 </tr>
 <tr>
-	<td>CUSTOM_SIZE_BUTTON</td>
-	<td>//div[contains(@class,'row size-selector')]//button[span[text()='Custom']]</td>
+	<td>SCREEN_SIZE_BUTTON</td>
+	<td>//div[contains(@class,'row size-selector')]//button[span[text()='${key_screenSize}']]</td>
 	<td></td>
 </tr>
 <tr>
