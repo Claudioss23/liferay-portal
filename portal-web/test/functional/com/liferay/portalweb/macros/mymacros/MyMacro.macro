@@ -2,12 +2,14 @@ definition {
 
 	macro assertScreenCustomValues {
 		AssertTextEquals(
-			locator1 = "MyPath#CUSTOM_SIZE_HEIGHT",
-			value1 = 1920);
+			key_id = "height",
+			locator1 = "MyPath#CUSTOM_SIZE_INPUT",
+			value1 = ${customHeight});
 
 		AssertTextEquals(
-			locator1 = "MyPath#CUSTOM_SIZE_WIDTH",
-			value1 = 1080);
+			key_id = "width",
+			locator1 = "MyPath#CUSTOM_SIZE_INPUT",
+			value1 = ${customWidth});
 	}
 
 	macro previewScreenCustomSize {
