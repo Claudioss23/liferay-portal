@@ -41,7 +41,7 @@ definition {
 				entryContent = "Blog Entry Content",
 				entryTitle = "Blog Entry Title");
 
-			Navigator.gotoPage(pageName = "Blogs Page");
+			Refresh();
 
 			BlogsEntry.viewEntryPG(
 				entryContent = "Blog Entry Content",
