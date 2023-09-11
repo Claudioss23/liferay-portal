@@ -14,21 +14,30 @@ definition {
 	@description = "Set Screen size to custom and validate values"
 	@priority = 3
 	test CanDefineDXPCustomScreenSize {
-		MyMacro.previewScreenCustomSize(
-			height = 1920,
-			width = 1080);
+		var customHeight = 1920;
+		var customWidth = 1080;
 
-		Click(locator1 = "MyPath#SIMULATION_MENU");
+		MyMacro.gotoSimulationScreenSize(screenSizeLabel = "Custom");
 
-		MyMacro.previewScreenCustomSize(
-			height = 1920,
-			width = 1080);
+		MyMacro.setScreenCustomSize(
+			height = ${customHeight},
+			width = ${customWidth});
 
-		Click(locator1 = "MyPath#SIMULATION_MENU");
+		MyMacro.closeSimulationMenu();
 
-		Click(locator1 = "MyPath#SIMULATION_MENU");
+		MyMacro.gotoSimulationScreenSize(screenSizeLabel = "Custom");
 
-		MyMacro.assertScreenCustomValues();
+		MyMacro.setScreenCustomSize(
+			height = ${customHeight},
+			width = ${customWidth});
+
+		MyMacro.closeSimulationMenu();
+
+		MyMacro.gotoSimulationScreenSize(screenSizeLabel = "Custom");
+
+		MyMacro.assertScreenCustomValues(
+			customHeight = ${customHeight},
+			customWidth = ${customWidth});
 	}
 
 }
