@@ -33,7 +33,7 @@ definition {
 		}
 	}
 
-	@description = "Can Search Blogs"
+	@description = "Check that is possible to search for blogs"
 	@priority = 5
 	test CanSearchBlogs {
 		task ("And 2 Blog Entries exists") {
