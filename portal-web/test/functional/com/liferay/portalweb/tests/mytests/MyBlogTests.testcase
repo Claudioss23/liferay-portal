@@ -34,7 +34,7 @@ definition {
 	}
 
 	@description = "Check that is possible to search for blogs"
-	@priority = 5
+	@priority = 4
 	test CanSearchBlogs {
 		task ("And 2 Blog Entries exists") {
 			JSONBlog.addEntry(
