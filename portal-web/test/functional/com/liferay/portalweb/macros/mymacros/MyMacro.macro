@@ -12,6 +12,10 @@ definition {
 			value1 = ${customWidth});
 	}
 
+	macro closeSimulationMenu {
+		Click(locator1 = "MyPath#SIMULATION_MENU");
+	}
+
 	macro gotoSimulationScreenSize {
 		Click(locator1 = "MyPath#SIMULATION_MENU");
 
