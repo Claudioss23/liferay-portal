@@ -37,7 +37,7 @@ definition {
 		}
 	}
 
-	@description = "Can Edit a Documents and Media"
+	@description = "Check that is possible to edit a Document and Media"
 	@priority = 5
 	test CanEditDM {
 		task ("And create a Document and Media (Upload the file)") {
