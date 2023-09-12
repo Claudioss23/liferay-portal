@@ -35,6 +35,13 @@ definition {
 		if (${testPortalInstance} == "true") {
 			PortalInstances.tearDownCP();
 		}
+		else {
+			DMDocument.tearDownCP();
+
+			DMFolder.tearDownCP();
+
+			PagesAdmin.tearDownCP();
+		}
 	}
 
 	@description = "Check that is possible to edit a Document and Media"
