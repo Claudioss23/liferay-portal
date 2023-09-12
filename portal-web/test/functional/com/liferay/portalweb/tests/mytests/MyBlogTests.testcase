@@ -36,40 +36,45 @@ definition {
 	@description = "Check that is possible to delete a blog"
 	@priority = 4
 	test CanDeleteBlog {
+		var blogEntryTitle1 = "Blog Entry Title 1";
+		var blogEntryContent1 = "Blog Entry Content 1";
+		var blogEntryTitle2 = "Blog Entry Title 2";
+		var blogEntryContent2 = "Blog Entry Content 2";
+
 		task ("And 2 Blog Entries exists") {
 			JSONBlog.addEntry(
-				entryContent = "Blog Entry Content 1",
-				entryTitle = "Blog Entry Title 1");
+				entryContent = ${blogEntryContent1},
+				entryTitle = ${blogEntryTitle1});
 
 			JSONBlog.addEntry(
-				entryContent = "Blog Entry Content 2",
-				entryTitle = "Blog Entry Title 2");
+				entryContent = ${blogEntryContent2},
+				entryTitle = ${blogEntryTitle2});
 
 			Refresh();
 
 			BlogsEntry.viewEntryPG(
-				entryContent = "Blog Entry Content 1",
-				entryTitle = "Blog Entry Title 1");
+				entryContent = ${blogEntryContent1},
+				entryTitle = ${blogEntryTitle1});
 
 			BlogsEntry.viewEntryPG(
-				entryContent = "Blog Entry Content 2",
-				entryTitle = "Blog Entry Title 2");
+				entryContent = ${blogEntryContent2},
+				entryTitle = ${blogEntryTitle2});
 		}
 
 		task ("When the User deletes Blog Entry 1") {
 			BlogsEntry.moveToRecycleBinPG(
-				entryContent = "Blog Entry Content 1",
-				entryTitle = "Blog Entry Title 1");
+				entryContent = ${blogEntryContent1},
+				entryTitle = ${blogEntryTitle1});
 		}
 
 		task ("Then Blog Entry 1 should not exist") {
-			BlogsEntry.viewNoPG(entryTitle = "Blog Entry Title 1");
+			BlogsEntry.viewNoPG(entryTitle = ${blogEntryTitle1});
 		}
 
 		task ("And Blog Entry 2 should exist") {
 			BlogsEntry.viewEntryPG(
-				entryContent = "Blog Entry Content 2",
-				entryTitle = "Blog Entry Title 2");
+				entryContent = ${blogEntryContent2},
+				entryTitle = ${blogEntryTitle2});
 		}
 	}
 
