@@ -22,10 +22,6 @@ definition {
 				widgetName = "Documents and Media");
 
 			Navigator.gotoPage(pageName = "DM Page");
-
-			DMDocument.enableActionsMenuOnPortlet();
-
-			LexiconEntry.changeDisplayStyle(displayStyle = "list");
 		}
 	}
 
@@ -48,12 +44,16 @@ definition {
 	@priority = 5
 	test CanCreateDM {
 		task ("When the user create a Documents and Media (Upload the file)") {
-			DMDocument.addPG(
+			DMNavigator.openDocumentsAndMediaAdmin(siteURLKey = "guest");
+
+			DMDocument.addCP(
 				dmDocumentFile = "Document_1.txt",
 				dmDocumentTitle = "DM File");
 		}
 
 		task ("Then the Documents and Media should display on the page") {
+			Navigator.gotoPage(pageName = "DM Page");
+
 			DMDocument.viewPG(
 				dmDocumentFileName = "Document_1.txt",
 				dmDocumentTitle = "DM File");
