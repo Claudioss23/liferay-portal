@@ -36,53 +36,58 @@ definition {
 	@description = "Check that is possible to search for blogs"
 	@priority = 4
 	test CanSearchBlogs {
+		var blogEntryTitle1 = "Blog Entry Title 1";
+		var blogEntryContent1 = "Blog Entry Content 1";
+		var blogEntryTitle2 = "Blog Entry Title 2";
+		var blogEntryContent2 = "Blog Entry Content 2";
+
 		task ("And 2 Blog Entries exists") {
 			JSONBlog.addEntry(
-				entryContent = "Blog Entry Content 1",
-				entryTitle = "Blog Entry Title 1");
+				entryContent = ${blogEntryContent1},
+				entryTitle = ${blogEntryTitle1});
 
 			JSONBlog.addEntry(
-				entryContent = "Blog Entry Content 2",
-				entryTitle = "Blog Entry Title 2");
+				entryContent = ${blogEntryContent2},
+				entryTitle = ${blogEntryTitle2});
 
 			Refresh();
 
 			BlogsEntry.viewEntryPG(
-				entryContent = "Blog Entry Content 1",
-				entryTitle = "Blog Entry Title 1");
+				entryContent = ${blogEntryContent1},
+				entryTitle = ${blogEntryTitle1});
 
 			BlogsEntry.viewEntryPG(
-				entryContent = "Blog Entry Content 2",
-				entryTitle = "Blog Entry Title 2");
+				entryContent = ${blogEntryContent2},
+				entryTitle = ${blogEntryTitle2});
 		}
 
 		task ("When the User searches for Blog Entry 1") {
-			SearchPortlets.searchEmbedded(searchTerm = "\"Blog Entry Title 1\"");
+			SearchPortlets.searchEmbedded(searchTerm = "\"${blogEntryTitle1}\"");
 		}
 
 		task ("Then Blog Entry 1 should display and Blog Entry 2 should not") {
 			SearchResultPortlet.viewSearchResults(
-				searchAssetTitle = "Blog Entry Title 1",
+				searchAssetTitle = ${blogEntryTitle1},
 				searchAssetType = "Blogs Entry",
-				searchTerm = "\"Blog Entry Title 1\"");
+				searchTerm = "\"${blogEntryTitle1}\"");
 
 			SearchResultPortlet.viewSearchResultNotPresent(
-				searchAssetTitle = "Blog Entry Title 2",
+				searchAssetTitle = ${blogEntryTitle2},
 				searchAssetType = "Blogs Entry");
 		}
 
 		task ("And when the User searches for Blog Entry 2") {
-			SearchPortlets.searchEmbedded(searchTerm = "\"Blog Entry Title 2\"");
+			SearchPortlets.searchEmbedded(searchTerm = "\"${blogEntryTitle2}\"");
 		}
 
 		task ("Then Blog Entry 2 should display and Blog Entry 1 should not") {
 			SearchResultPortlet.viewSearchResults(
-				searchAssetTitle = "Blog Entry Title 2",
+				searchAssetTitle = ${blogEntryTitle2},
 				searchAssetType = "Blogs Entry",
-				searchTerm = "\"Blog Entry Title 2\"");
+				searchTerm = "\"${blogEntryTitle2}\"");
 
 			SearchResultPortlet.viewSearchResultNotPresent(
-				searchAssetTitle = "Blog Entry Title 1",
+				searchAssetTitle = ${blogEntryTitle1},
 				searchAssetType = "Blogs Entry");
 		}
 	}
