@@ -45,44 +45,49 @@ definition {
 	@description = "Check that is possible to download a Document and Media"
 	@priority = 5
 	test CanDownloadDM {
+		var dmEntryTitle1 = "DMTest 1";
+		var dmEntryFile1 = "Document_1.txt";
+		var dmEntryTitle2 = "DMTest 2";
+		var dmEntryFile2 = "Document_2.doc";
+
 		task ("And create 2 Documents and Media (Upload the file)") {
 			JSONDocument.addFileWithUploadedFile(
-				dmDocumentTitle = "DMTest 1",
+				dmDocumentTitle = ${dmEntryTitle1},
 				groupName = "Guest",
 				mimeType = "text/plain",
-				sourceFileName = "Document_1.txt");
+				sourceFileName = ${dmEntryFile1});
 
 			JSONDocument.addFileWithUploadedFile(
-				dmDocumentTitle = "DMTest 2",
+				dmDocumentTitle = ${dmEntryTitle2},
 				groupName = "Guest",
 				mimeType = "application/msword",
-				sourceFileName = "Document_2.doc");
+				sourceFileName = ${dmEntryFile2});
 
 			Refresh();
 
 			DMDocument.viewPG(
-				dmDocumentFileName = "Document_1.txt",
-				dmDocumentTitle = "DMTest 1");
+				dmDocumentFileName = ${dmEntryFile1},
+				dmDocumentTitle = ${dmEntryTitle1});
 
 			Click(locator1 = "Icon#BACK");
 
 			DMDocument.viewPG(
-				dmDocumentFileName = "Document_2.doc",
-				dmDocumentTitle = "DMTest 2");
+				dmDocumentFileName = ${dmEntryFile2},
+				dmDocumentTitle = ${dmEntryTitle2});
 
 			Click(locator1 = "Icon#BACK");
 		}
 
 		task ("When the user download document from DMTest 1") {
-			DMDocument.downloadPG(dmDocumentTitle = "DMTest 1");
+			DMDocument.downloadPG(dmDocumentTitle = ${dmEntryTitle1});
 		}
 
 		task ("Then the file that was downloaded must be from DMTest 1") {
-			DMDocument.assertFileNameFromTempFolder(fileName = "Document_1.txt");
+			DMDocument.assertFileNameFromTempFolder(fileName = ${dmEntryFile1});
 		}
 
 		task ("And DMTest 2 file should not be downloaded") {
-			DMDocument.assertNoFileNameFromTempFolder(fileName = "Document_2.doc");
+			DMDocument.assertNoFileNameFromTempFolder(fileName = ${dmEntryFile2});
 		}
 	}
 
