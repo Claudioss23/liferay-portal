@@ -47,36 +47,40 @@ definition {
 	@description = "Check that is possible to edit a Document and Media"
 	@priority = 5
 	test CanEditDM {
+		var dmEntryTitle = "DM File";
+		var dmEntryTitleEdited = "DM Document Edited";
+		var dmFileList = ListUtil.newListFromString("Document_1.txt,Document_2.doc", ",");
+
 		task ("And create a Document and Media (Upload the file)") {
 			JSONDocument.addFileWithUploadedFile(
-				dmDocumentTitle = "DM File",
+				dmDocumentTitle = ${dmEntryTitle},
 				groupName = "Guest",
 				mimeType = "text/plain",
-				sourceFileName = "Document_1.txt");
+				sourceFileName = ListUtil.get(${dmFileList}, 0));
 
 			Refresh();
 
 			DMDocument.viewPG(
-				dmDocumentFileName = "Document_1.txt",
-				dmDocumentTitle = "DM File");
+				dmDocumentFileName = ListUtil.get(${dmFileList}, 0),
+				dmDocumentTitle = ${dmEntryTitle});
 
 			Click(locator1 = "Icon#BACK");
 		}
 
 		task ("When the User edits the Documents and Media (Change DM name and the file)") {
 			DMDocument.editPG(
-				dmDocumentFileEdit = "Document_2.doc",
-				dmDocumentFileNameEdit = "Document_2.doc",
-				dmDocumentTitle = "DM File",
-				dmDocumentTitleEdit = "DM Document Edited");
+				dmDocumentFileEdit = ListUtil.get(${dmFileList}, 1),
+				dmDocumentFileNameEdit = ListUtil.get(${dmFileList}, 1),
+				dmDocumentTitle = ${dmEntryTitle},
+				dmDocumentTitleEdit = ${dmEntryTitleEdited});
 
 			Click(locator1 = "Icon#BACK");
 		}
 
 		task ("Then the Documents and Media should be edited") {
 			DMDocument.viewPG(
-				dmDocumentFileName = "Document_2.doc",
-				dmDocumentTitle = "DM Document Edited");
+				dmDocumentFileName = ListUtil.get(${dmFileList}, 1),
+				dmDocumentTitle = ${dmEntryTitleEdited});
 		}
 	}
 
