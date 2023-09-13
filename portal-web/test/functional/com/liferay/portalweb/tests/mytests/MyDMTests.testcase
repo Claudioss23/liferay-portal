@@ -22,8 +22,6 @@ definition {
 				widgetName = "Documents and Media");
 
 			Navigator.gotoPage(pageName = "DM Page");
-
-			LexiconEntry.changeDisplayStyle(displayStyle = "list");
 		}
 	}
 
