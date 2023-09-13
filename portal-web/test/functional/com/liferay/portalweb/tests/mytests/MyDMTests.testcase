@@ -22,10 +22,6 @@ definition {
 				widgetName = "Documents and Media");
 
 			Navigator.gotoPage(pageName = "DM Page");
-
-			DMDocument.enableActionsMenuOnPortlet();
-
-			LexiconEntry.changeDisplayStyle(displayStyle = "list");
 		}
 	}
 
@@ -63,21 +59,21 @@ definition {
 			DMDocument.viewPG(
 				dmDocumentFileName = ListUtil.get(${dmFileList}, 0),
 				dmDocumentTitle = ${dmEntryTitle});
-
-			Click(locator1 = "Icon#BACK");
 		}
 
 		task ("When the User edits the Documents and Media (Change DM name and the file)") {
-			DMDocument.editPG(
+			DMNavigator.openDocumentsAndMediaAdmin(siteURLKey = "guest");
+
+			DMDocument.editCP(
 				dmDocumentFileEdit = ListUtil.get(${dmFileList}, 1),
 				dmDocumentFileNameEdit = ListUtil.get(${dmFileList}, 1),
 				dmDocumentTitle = ${dmEntryTitle},
 				dmDocumentTitleEdit = ${dmEntryTitleEdited});
-
-			Click(locator1 = "Icon#BACK");
 		}
 
 		task ("Then the Documents and Media should be edited") {
+			Navigator.gotoPage(pageName = "DM Page");
+
 			DMDocument.viewPG(
 				dmDocumentFileName = ListUtil.get(${dmFileList}, 1),
 				dmDocumentTitle = ${dmEntryTitleEdited});
