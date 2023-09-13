@@ -65,7 +65,7 @@ definition {
 
 			for (var file : list ${dmFileList}) {
 				var i = ${i} + 1;
-				
+
 				DMDocument.viewPG(
 					dmDocumentFileName = ${file},
 					dmDocumentTitle = "${dmEntryTitle} ${i}");
@@ -82,7 +82,7 @@ definition {
 
 		task ("Then DMTest 1 should not exist") {
 			Navigator.gotoPage(pageName = "DM Page");
-			
+
 			DMDocument.cannotViewCP(dmDocumentTitle = "${dmEntryTitle1} 1");
 		}
 
