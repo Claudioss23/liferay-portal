@@ -22,10 +22,6 @@ definition {
 				widgetName = "Documents and Media");
 
 			Navigator.gotoPage(pageName = "DM Page");
-
-			DMDocument.enableActionsMenuOnPortlet();
-
-			LexiconEntry.changeDisplayStyle(displayStyle = "list");
 		}
 	}
 
@@ -52,7 +48,7 @@ definition {
 
 		task ("And create 2 Documents and Media (Upload the file)") {
 			var i = 0;
-			
+
 			for (var file : list ${dmFileList}) {
 				var i = ${i} + 1;
 
@@ -79,10 +75,14 @@ definition {
 		}
 
 		task ("When the User delete a document and media") {
-			DMDocument.deletePG(dmDocumentTitle = "${dmEntryTitle} 1");
+			DMNavigator.openDocumentsAndMediaAdmin(siteURLKey = "guest");
+
+			DMDocument.deleteCP(dmDocumentTitle = "${dmEntryTitle} 1");
 		}
 
 		task ("Then DMTest 1 should not exist") {
+			Navigator.gotoPage(pageName = "DM Page");
+			
 			DMDocument.cannotViewCP(dmDocumentTitle = "${dmEntryTitle1} 1");
 		}
 
