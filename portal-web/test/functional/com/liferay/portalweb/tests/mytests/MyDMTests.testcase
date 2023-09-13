@@ -45,49 +45,47 @@ definition {
 	@description = "Check that is possible to download a Document and Media"
 	@priority = 5
 	test CanDownloadDM {
-		var dmEntryTitle1 = "DMTest 1";
-		var dmEntryFile1 = "Document_1.txt";
-		var dmEntryTitle2 = "DMTest 2";
-		var dmEntryFile2 = "Document_2.doc";
+		var dmEntryTitle = "DMTest";
+		var dmFileList = ListUtil.newListFromString("Document_1.txt,Document_2.doc", ",");
 
 		task ("And create 2 Documents and Media (Upload the file)") {
-			JSONDocument.addFileWithUploadedFile(
-				dmDocumentTitle = ${dmEntryTitle1},
-				groupName = "Guest",
-				mimeType = "text/plain",
-				sourceFileName = ${dmEntryFile1});
+			var i = 0;
 
-			JSONDocument.addFileWithUploadedFile(
-				dmDocumentTitle = ${dmEntryTitle2},
-				groupName = "Guest",
-				mimeType = "application/msword",
-				sourceFileName = ${dmEntryFile2});
+			for (var file : list ${dmFileList}) {
+				var i = ${i} + 1;
+
+				JSONDocument.addFileWithUploadedFile(
+					dmDocumentTitle = "${dmEntryTitle} ${i}",
+					groupName = "Guest",
+					mimeType = "text/plain",
+					sourceFileName = ${file});
+			}
 
 			Refresh();
 
-			DMDocument.viewPG(
-				dmDocumentFileName = ${dmEntryFile1},
-				dmDocumentTitle = ${dmEntryTitle1});
+			var i = 0;
 
-			Click(locator1 = "Icon#BACK");
+			for (var file : list ${dmFileList}) {
+				var i = ${i} + 1;
 
-			DMDocument.viewPG(
-				dmDocumentFileName = ${dmEntryFile2},
-				dmDocumentTitle = ${dmEntryTitle2});
+				DMDocument.viewPG(
+					dmDocumentFileName = ${file},
+					dmDocumentTitle = "${dmEntryTitle} ${i}");
 
-			Click(locator1 = "Icon#BACK");
+				Click(locator1 = "Icon#BACK");
+			}
 		}
 
 		task ("When the user download document from DMTest 1") {
-			DMDocument.downloadPG(dmDocumentTitle = ${dmEntryTitle1});
+			DMDocument.downloadPG(dmDocumentTitle = "${dmEntryTitle} 1");
 		}
 
 		task ("Then the file that was downloaded must be from DMTest 1") {
-			DMDocument.assertFileNameFromTempFolder(fileName = ${dmEntryFile1});
+			DMDocument.assertFileNameFromTempFolder(fileName = ListUtil.get(${dmFileList}, 0));
 		}
 
 		task ("And DMTest 2 file should not be downloaded") {
-			DMDocument.assertNoFileNameFromTempFolder(fileName = ${dmEntryFile2});
+			DMDocument.assertNoFileNameFromTempFolder(fileName = ListUtil.get(${dmFileList}, 1));
 		}
 	}
 
