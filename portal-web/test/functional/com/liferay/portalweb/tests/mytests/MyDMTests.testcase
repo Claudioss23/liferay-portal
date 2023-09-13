@@ -47,51 +47,49 @@ definition {
 	@description = "Check that is possible to delete a Document and Media"
 	@priority = 4
 	test CanDeleteDM {
-		var dmEntryTitle1 = "DMTest 1";
-		var dmEntryFile1 = "Document_1.txt";
-		var dmEntryTitle2 = "DMTest 2";
-		var dmEntryFile2 = "Document_2.doc";
+		var dmEntryTitle = "DMTest";
+		var dmFileList = ListUtil.newListFromString("Document_1.txt,Document_2.doc", ",");
 
 		task ("And create 2 Documents and Media (Upload the file)") {
-			JSONDocument.addFileWithUploadedFile(
-				dmDocumentTitle = ${dmEntryTitle1},
-				groupName = "Guest",
-				mimeType = "text/plain",
-				sourceFileName = ${dmEntryFile1});
+			var i = 0;
+			
+			for (var file : list ${dmFileList}) {
+				var i = ${i} + 1;
 
-			JSONDocument.addFileWithUploadedFile(
-				dmDocumentTitle = ${dmEntryTitle2},
-				groupName = "Guest",
-				mimeType = "application/msword",
-				sourceFileName = ${dmEntryFile2});
+				JSONDocument.addFileWithUploadedFile(
+					dmDocumentTitle = "${dmEntryTitle} ${i}",
+					groupName = "Guest",
+					mimeType = "text/plain",
+					sourceFileName = ${file});
+			}
 
 			Refresh();
 
-			DMDocument.viewPG(
-				dmDocumentFileName = ${dmEntryFile1},
-				dmDocumentTitle = ${dmEntryTitle1});
+			var i = 0;
 
-			Click(locator1 = "Icon#BACK");
+			for (var file : list ${dmFileList}) {
+				var i = ${i} + 1;
+				
+				DMDocument.viewPG(
+					dmDocumentFileName = ${file},
+					dmDocumentTitle = "${dmEntryTitle} ${i}");
 
-			DMDocument.viewPG(
-				dmDocumentFileName = ${dmEntryFile2},
-				dmDocumentTitle = ${dmEntryTitle2});
-
-			Click(locator1 = "Icon#BACK");
+				Click(locator1 = "Icon#BACK");
+			}
 		}
 
 		task ("When the User delete a document and media") {
-			DMDocument.deletePG(dmDocumentTitle = ${dmEntryTitle1});
+			DMDocument.deletePG(dmDocumentTitle = "${dmEntryTitle} 1");
 		}
 
 		task ("Then DMTest 1 should not exist") {
-			DMDocument.cannotViewCP(dmDocumentTitle = ${dmEntryTitle1});
+			DMDocument.cannotViewCP(dmDocumentTitle = "${dmEntryTitle1} 1");
 		}
 
 		task ("And DMTest 2 should exist") {
 			DMDocument.viewPG(
-				dmDocumentFileName = ${dmEntryFile2},
-				dmDocumentTitle = ${dmEntryTitle2});
+				dmDocumentFileName = ListUtil.get(${dmFileList}, 1),
+				dmDocumentTitle = "${dmEntryTitle} 2");
 		}
 	}
 
