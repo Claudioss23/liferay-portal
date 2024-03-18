@@ -149,7 +149,7 @@
 						"en_US": "Set Up Account"
 					},
 					"name": "setUpAccount",
-					"objectActionExecutorKey": "function#clarity-workflow-spring-boot-object-action-account",
+					"objectActionExecutorKey": "function#liferay-clarity-etc-spring-boot-object-action-account",
 					"objectActionTriggerKey": "standalone",
 					"parameters": {
 					},

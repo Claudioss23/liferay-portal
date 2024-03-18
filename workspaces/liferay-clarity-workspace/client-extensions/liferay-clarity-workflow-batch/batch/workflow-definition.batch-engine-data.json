@@ -357,7 +357,7 @@
 											},
 											{
 												"#tag-name": "script-language",
-												"#value": "function#clarity-spring-boot-workflow-action-application"
+												"#value": "function#liferay-clarity-etc-spring-boot-workflow-action-application"
 											},
 											{
 												"#tag-name": "priority",
