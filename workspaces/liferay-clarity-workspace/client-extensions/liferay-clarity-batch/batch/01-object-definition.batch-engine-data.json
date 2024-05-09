@@ -1,0 +1,200 @@
+				{
+					"DBType": "String",
+					"businessType": "Text",
+					"indexed": true,
+					"indexedLanguageId": "en_US",
+					"label": {
+						"en_US": "Reference ZIP, Postal Code"
+					},
+					"name": "referenceZIPPostalCode",
+					"readOnly": "false",
+					"state": false,
+					"type": "String"
+				},
+				{
+					"DBType": "String",
+					"businessType": "Text",
+					"indexed": false,
+					"label": {
+						"en_US": "Status"
+					},
+					"name": "status",
+					"readOnly": "true",
+					"state": false,
+					"system": true,
+					"type": "String"
+				}
+			],
+			"objectFolderExternalReferenceCode": "default",
+			"objectLayouts": [
+				{
+					"defaultObjectLayout": true,
+					"name": {
+						"en_US": "Application Layout"
+					},
+					"objectDefinitionExternalReferenceCode": "D4B8_DISTRIBUTOR_APPLICATION",
+					"objectLayoutTabs": [
+						{
+							"name": {
+								"en_US": "Application"
+							},
+							"objectLayoutBoxes": [
+								{
+									"collapsable": true,
+									"name": {
+										"en_US": "General Details"
+									},
+									"objectLayoutRows": [
+										{
+											"objectLayoutColumns": [
+												{
+													"objectFieldName": "applicantName",
+													"priority": 0,
+													"size": 6
+												},
+												{
+													"objectFieldName": "applicantEmail",
+													"priority": 0,
+													"size": 6
+												}
+											],
+											"priority": 0
+										},
+										{
+											"objectLayoutColumns": [
+												{
+													"objectFieldName": "productsOfInterest",
+													"priority": 0,
+													"size": 12
+												}
+											],
+											"priority": 0
+										},
+										{
+											"objectLayoutColumns": [
+												{
+													"objectFieldName": "distributionRegions",
+													"priority": 0,
+													"size": 12
+												}
+											],
+											"priority": 0
+										},
+										{
+											"objectLayoutColumns": [
+												{
+													"objectFieldName": "orderTypesOfInterest",
+													"priority": 0,
+													"size": 12
+												}
+											],
+											"priority": 0
+										},
+										{
+											"objectLayoutColumns": [
+												{
+													"objectFieldName": "productLabeling",
+													"priority": 0,
+													"size": 6
+												},
+												{
+													"objectFieldName": "estimatedAnnualPurchaseVolume",
+													"priority": 0,
+													"size": 6
+												}
+											],
+											"priority": 0
+										},
+										{
+											"objectLayoutColumns": [
+												{
+													"objectFieldName": "comments",
+													"priority": 0,
+													"size": 12
+												}
+											],
+											"priority": 0
+										},
+										{
+											"objectLayoutColumns": [
+												{
+													"objectFieldName": "applicationState",
+													"priority": 0,
+													"size": 6
+												}
+											],
+											"priority": 0
+										}
+									],
+									"priority": 0,
+									"type": "regular"
+								},
+								{
+									"collapsable": true,
+									"name": {
+										"en_US": "Contact Information"
+									},
+									"objectLayoutRows": [
+										{
+											"objectLayoutColumns": [
+												{
+													"objectFieldName": "primaryContactName",
+													"priority": 0,
+													"size": 6
+												},
+												{
+													"objectFieldName": "primaryContactTitle",
+													"priority": 0,
+													"size": 6
+												}
+											],
+											"priority": 0
+										},
+										{
+											"objectLayoutColumns": [
+												{
+													"objectFieldName": "primaryContactEmail",
+													"priority": 0,
+													"size": 6
+												},
+												{
+													"objectFieldName": "primaryContactPhoneNumber",
+													"priority": 0,
+													"size": 6
+												}
+											],
+											"priority": 0
+										}
+									],
+									"priority": 0,
+									"type": "regular"
+								},
+								{
+									"collapsable": true,
+									"name": {
+										"en_US": "Business Details "
+									},
+									"objectLayoutRows": [
+										{
+											"objectLayoutColumns": [
+												{
+													"objectFieldName": "businessName",
+													"priority": 0,
+													"size": 6
+												},
+												{
+													"objectFieldName": "businessType",
+													"priority": 0,
+													"size": 6
+												}
+											],
+											"priority": 0
+										},
+										{
+											"objectLayoutColumns": [
+												{
+													"objectFieldName": "businessWebsite",
+													"priority": 0,
+													"size": 6
+												},
+												{
