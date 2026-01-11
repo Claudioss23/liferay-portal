@@ -1,0 +1,200 @@
+										{
+											"objectLayoutColumns": [
+												{
+													"objectFieldName": "bankAddressLineOne",
+													"priority": 0,
+													"size": 12
+												}
+											],
+											"priority": 0
+										},
+										{
+											"objectLayoutColumns": [
+												{
+													"objectFieldName": "bankAddressLineTwo",
+													"priority": 0,
+													"size": 12
+												}
+											],
+											"priority": 0
+										},
+										{
+											"objectLayoutColumns": [
+												{
+													"objectFieldName": "bankCity",
+													"priority": 0,
+													"size": 6
+												},
+												{
+													"objectFieldName": "bankZIPPostalCode",
+													"priority": 0,
+													"size": 6
+												}
+											],
+											"priority": 0
+										},
+										{
+											"objectLayoutColumns": [
+												{
+													"objectFieldName": "bankStateProvinceRegion",
+													"priority": 0,
+													"size": 6
+												},
+												{
+													"objectFieldName": "bankCountry",
+													"priority": 0,
+													"size": 6
+												}
+											],
+											"priority": 0
+										}
+									],
+									"priority": 0,
+									"type": "regular"
+								},
+								{
+									"collapsable": true,
+									"name": {
+										"en_US": "Credit Reference Details"
+									},
+									"objectLayoutRows": [
+										{
+											"objectLayoutColumns": [
+												{
+													"objectFieldName": "referenceSupplierName",
+													"priority": 0,
+													"size": 6
+												},
+												{
+													"objectFieldName": "referencePhoneNumber",
+													"priority": 0,
+													"size": 6
+												}
+											],
+											"priority": 0
+										},
+										{
+											"objectLayoutColumns": [
+												{
+													"objectFieldName": "referenceAddressLineOne",
+													"priority": 0,
+													"size": 12
+												}
+											],
+											"priority": 0
+										},
+										{
+											"objectLayoutColumns": [
+												{
+													"objectFieldName": "referenceAddressLineTwo",
+													"priority": 0,
+													"size": 12
+												}
+											],
+											"priority": 0
+										},
+										{
+											"objectLayoutColumns": [
+												{
+													"objectFieldName": "referenceCity",
+													"priority": 0,
+													"size": 6
+												},
+												{
+													"objectFieldName": "referenceZIPPostalCode",
+													"priority": 0,
+													"size": 6
+												}
+											],
+											"priority": 0
+										},
+										{
+											"objectLayoutColumns": [
+												{
+													"objectFieldName": "referenceStateProvinceRegion",
+													"priority": 0,
+													"size": 6
+												},
+												{
+													"objectFieldName": "referenceCountry",
+													"priority": 0,
+													"size": 6
+												}
+											],
+											"priority": 0
+										}
+									],
+									"priority": 0,
+									"type": "regular"
+								}
+							],
+							"priority": 0
+						},
+						{
+							"name": {
+								"en_US": "Evaluation Notes"
+							},
+							"objectRelationshipExternalReferenceCode": "R_APPLICATION_TO_EVALUATIONS",
+							"priority": 0
+						}
+					]
+				}
+			],
+			"objectRelationships": [
+				{
+					"deletionType": "prevent",
+					"externalReferenceCode": "R_APPLICATION_TO_EVALUATIONS",
+					"label": {
+						"en_US": "Application to Evaluations"
+					},
+					"name": "applicationToEvaluations",
+					"objectDefinitionExternalReferenceCode1": "D4B8_DISTRIBUTOR_APPLICATION",
+					"objectDefinitionExternalReferenceCode2": "D4B8_APPLICATION_EVALUATION",
+					"objectDefinitionModifiable2": true,
+					"objectDefinitionName2": "ApplicationEvaluation",
+					"objectDefinitionSystem2": false,
+					"objectField": {
+						"DBType": "Long",
+						"businessType": "Relationship",
+						"indexed": true,
+						"indexedAsKeyword": false,
+						"label": {
+							"en_US": "Application to Evaluations"
+						},
+						"localized": false,
+						"name": "r_applicationToEvaluations_c_d4b8DistributorApplicationId",
+						"objectFieldSettings": [
+							{
+								"name": "objectDefinition1ShortName",
+								"value": "D4B8DistributorApplication"
+							},
+							{
+								"name": "objectRelationshipERCObjectFieldName",
+								"value": "r_applicationToEvaluations_c_d4b8DistributorApplicationERC"
+							}
+						],
+						"readOnly": "false",
+						"relationshipType": "oneToMany",
+						"required": true,
+						"state": false,
+						"type": "Long",
+						"unique": false
+					},
+					"parameterObjectFieldId": 0,
+					"reverse": false,
+					"type": "oneToMany"
+				}
+			],
+			"objectValidationRules": [
+				{
+					"active": true,
+					"engine": "ddm",
+					"engineLabel": "Expression Builder",
+					"errorLabel": {
+						"en_US": "Please enter a valid applicant email address."
+					},
+					"name": {
+						"en_US": "Email, applicantEmail"
+					},
+					"objectDefinitionExternalReferenceCode": "D4B8_DISTRIBUTOR_APPLICATION",
+					"outputType": "fullValidation",
